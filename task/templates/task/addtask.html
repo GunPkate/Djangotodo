@@ -1,0 +1,38 @@
+{% extends 'task/base.html'%}
+    {% block title%}
+        <h1 class="display-4 fw-normal">Task</h1>
+    {% endblock title%}
+
+        {% block content%}
+
+        <center>
+            {% if alert %}
+                ({{alert}})
+            {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+  
+            <div class="form-group">
+                <label for="projectid">Select project:</label>
+                <select class="form-control" id="projectid" name="projectid">
+                    {% for p in allproject%}
+                        <option value="{{p.id}}">{{p.project_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label for="task_name">Task Name:</label>
+                <input type="text" class="form-control" id="task_name" name="task_name"/>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label for="task_desc">Description:</label>
+                <textarea class="form-control" rows='5' id="task_desc" name="task_desc"></textarea>
+            </div>
+            <br/>
+            <button type="Submit" class="btn btn-primary">Add Task</button>
+
+        </form>
+        </center>
+        {% endblock content%}

@@ -1,0 +1,17 @@
+{% extends 'task/base.html'%}
+      {% block title%}
+        <h1 class="display-4 fw-normal">Projects</h1>
+        <p class="fs-5 text-muted">List of my projects</p>
+      {% endblock title%}
+
+      {% block content%}
+        {% for p in list2%}
+            <h1>- {{p.project_name}}</h1> <br/>
+            <p>{{p.project_desc}}</p> <hr/>
+            <p>
+              {% for t in p.alltask%}
+                >>> {{t.task_name}}<hr/>
+              {% endfor %}
+            </p>   
+        {% endfor %}
+      {% endblock content%}
